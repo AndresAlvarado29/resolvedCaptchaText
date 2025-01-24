@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from PIL import Image
 import cv2
 import pytesseract
 import numpy as np
@@ -20,7 +19,7 @@ invert = cv2.bitwise_not(blur)
 _, thresh = cv2.threshold(invert, 150, 200, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 kernel = np.ones((1, 1), np.uint8) 
 dilate = cv2.dilate(thresh, kernel, iterations=1)
-cv2.imwrite('captcha_procesado.png', dilate)
+cv2.imwrite('captcha_pytesseract.png', dilate)
 # Convertir imagen a texto
 captchaToText = pytesseract.image_to_string(dilate)
 print("Texto extraído:", captchaToText)

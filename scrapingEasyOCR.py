@@ -30,9 +30,9 @@ def resolverCaptcha(rutaImagen):
     _, thresh = cv2.threshold(invert, 200, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2))
     processed = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)
-    cv2.imwrite('captcha_procesado.png', processed)
+    cv2.imwrite('captcha_easyOCR.png', processed)
     reader = easyocr.Reader(['en'])  # Usamos el idioma inglés para detectar letras y números
-    result = reader.readtext('captcha_procesado.png')
+    result = reader.readtext('captcha_easyOCR.png')
     captchaToText = "".join([res[1] for res in result]).strip()
     print("Texto extraído con EasyOCR:", captchaToText)
     return captchaToText
@@ -114,6 +114,12 @@ if not captcha_resuelto:
     print("No se pudo resolver el captcha después de varios intentos.")
     browser.quit()
 
+
+#esperar 5 segundos
+time.sleep(5)
+#toma toda la pantalla
+#browser.save_screenshot('captcha.png')
+#toma un elemento en especifico
     
 #identificacion = browser.find_element(By.ID, 'formPrincipal:j_idt42').text
 #nombres = browser.find_element(By.ID, 'formPrincipal:j_idt44').text
@@ -123,13 +129,6 @@ if not captcha_resuelto:
 #print("Nombres:", nombres)
 #print("Género:", genero)
 #print("Nacionalidad:", nacionalidad)
-
-
-#esperar 5 segundos
-time.sleep(5)
-#toma toda la pantalla
-#browser.save_screenshot('captcha.png')
-#toma un elemento en especifico
 
 
 
