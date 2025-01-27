@@ -101,6 +101,12 @@ Este proyecto automatiza la interacción con un sitio web utilizando Selenium pa
 ---
 ## Guía de Uso
 
+### Paso 1: Descargar el Proyecto
+
+1. Descarga el archivo `.zip` que se encuentra en el repositorio o puedes clonarlo
+
+2. Extrae el contenido del archivo `.zip` en una carpeta local.
+
 ### Paso 1: Configurar el Entorno
 
 1. Instala todas las dependencias necesarias usando `pip`:
